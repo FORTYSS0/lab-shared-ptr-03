@@ -2,6 +2,11 @@
 
 ### Задание
 
+| branch | status |
+|--------|--------|
+| fortyss-parser |[![Build Status](https://github.com/FORTYSS0/lab-shared-ptr-03/workflows/CI/badge.svg)](https://travis-ci.com/github/FORTYSS0/lab-shared-ptr-03)|
+
+
 **SharedPtr** реализует подсчет ссылок на ресурс. Ресурс освободится тогда, когда счетчик ссылок на него будет равен 0. Как видно, система реализует одно из основных правил сборщика мусора.
 Многопоточное программирование сложно представить без использования класса `shared_ptr`. Например, класс `scoped_refptr` (аналог `std::shared_ptr`) используется в Chromium [32,753 раз](https://cs.chromium.org/search/?q=scoped_refptr&sq=package:chromium&type=cs). Чтобы лучше усвоить и понять принцип работы этого "умного" указателя, необходимо его реализовать своими руками.
 
