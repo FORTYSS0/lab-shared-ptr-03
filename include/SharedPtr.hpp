@@ -13,8 +13,8 @@ template <typename T>
 class SharedPtr {
  public:
   SharedPtr() noexcept : ptr(nullptr), counter(nullptr){}
-  SharedPtr(T* ptr) {
-    std::unique_ptr<T> p(ptr);
+  SharedPtr(T* r) {
+    std::unique_ptr<T> p(r);
     counter = new SPCounter<T>(p.get());
     ptr=p.release();
   }
@@ -24,8 +24,8 @@ class SharedPtr {
     counter->add();
   }
   SharedPtr(SharedPtr&& r) {
-    std::swap(ptr, r.ptr)
-    std::swap(counter, r.counter)
+    std::swap(ptr, r.ptr);
+    std::swap(counter, r.counter);
   }
   ~SharedPtr() {
     counter->release();
@@ -49,7 +49,7 @@ class SharedPtr {
     return (ptr != nullptr);
   }
   auto operator*() const -> T& {
-    return *ptr
+    return *ptr;
   }
   auto operator->() const -> T* {
     return ptr;
@@ -62,8 +62,8 @@ class SharedPtr {
     ptr = nullptr;
     counter = nullptr;
   }
-  void reset(T* ptr) {
-    std::unique_ptr<T> p(ptr);
+  void reset(T* r) {
+    std::unique_ptr<T> p(r);
     counter = new SPCounter<T>(p.get());
     ptr=p.release();
   }
@@ -76,14 +76,13 @@ class SharedPtr {
     counter->release();
     ptr = std::move(r.ptr);
     counter = std::move(r.counter);
-    return this;
   }
   void swap(SharedPtr& r) {
-    std::swap(r.ptr, ptr)
+    std::swap(r.ptr, ptr);
     std::swap(r.counter, counter);
   }
   void swap(SharedPtr& r, SharedPtr& r1) {
-    std::swap(r.ptr, r1.ptr)
+    std::swap(r.ptr, r1.ptr);
     std::swap(r.counter, r1.counter);
   }
   // возвращает количество объектов SharedPtr, которые ссылаются на тот же управляемый объект

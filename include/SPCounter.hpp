@@ -8,13 +8,13 @@
 template<typename T>
 class SPCounter {
  public:
-  explicit SPCounter(T *ptr) noexcept : count(1), this->ptr(ptr) {}
+  explicit SPCounter(T *p) noexcept : count(1), ptr(p) {}
   void add() noexcept {
-    ++count
+    ++count;
   }
   void release() noexcept {
     if (!--count) {
-      delete ptr;
+      ptr = nullptr;
       delete this;
     }
   }
