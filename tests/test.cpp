@@ -9,7 +9,7 @@ TEST(Example, EmptyTest) {
     int val;
   };
   SharedPtr<int> sp;
-  std::cout<<(sp)<< " " <<sp.use_count() <<std::endl;
+  /*std::cout<<(sp)<< " " <<sp.use_count() <<std::endl;
   int val = 5;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
@@ -28,6 +28,6 @@ TEST(Example, EmptyTest) {
   std::cout<<(sp1)<<" "<<*sp2<<std::endl;
   std::cout<<*sp3<<" "<<*spoz<<std::endl;
   sp3.swap(spoz);
-  std::cout<<*sp3<<" "<<*spoz<<std::endl;
+  std::cout<<*sp3<<" "<<*spoz<<std::endl;*/
   EXPECT_TRUE(true);
 }
