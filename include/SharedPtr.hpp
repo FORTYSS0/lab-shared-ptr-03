@@ -111,7 +111,6 @@ class SharedPtr {
     } else {
       if(counter) {
         counter->add();
-        counter->add(1);
       }
     }
 
