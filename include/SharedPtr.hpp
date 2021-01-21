@@ -98,12 +98,10 @@ class SharedPtr {
     counter = nullptr;
   }
   void reset(T* r) {
-    if (counter->use_count() == 1) {
-      if(counter) {
-          counter->release();
-      }
-    } else {
-      if(counter) {
+    if(counter) {
+      if (counter->use_count() == 1) {
+        counter->release();
+      } else {
         counter->unadd();
       }
     }
