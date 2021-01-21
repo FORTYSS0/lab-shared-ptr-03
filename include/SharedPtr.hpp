@@ -87,13 +87,11 @@ class SharedPtr {
 
   auto get() -> T* { return ptr; }
   void reset() {
-    if (counter->use_count() == 1) {
-      if(counter) {
+    if(counter) {
+      if (counter->use_count() == 1) {
         counter->release();
-      }
-    } else {
-      if(counter) {
-        counter->unadd();
+      } else {
+          counter->unadd();
       }
     }
     ptr = nullptr;
