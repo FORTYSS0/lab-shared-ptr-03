@@ -14,8 +14,8 @@ TEST(Example, EmptyTest) {
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
   SharedPtr<int> sp3(sp2);
-  SharedPtr<int> spoz(new int (10));
-  //std::cout<<sp1.use_count()<<std::endl;
+  //SharedPtr<int> spoz(new int (10));
+  std::cout<<sp1.use_count()<<std::endl;
   //Values val1;
   //val1.val=20;
   //SharedPtr<Values> sp5(&val1);
