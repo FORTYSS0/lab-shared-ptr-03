@@ -38,7 +38,10 @@ class SharedPtr {
       throw std::runtime_error("Not assignable type!");
     }
   }
-  ~SharedPtr() noexcept { counter->release(); }
+  ~SharedPtr() noexcept {
+    counter->release();
+    delete ptr;
+  }
   auto operator=(const SharedPtr& r) -> SharedPtr& {
     if(std::is_move_constructible<T>::value && &r !=this) {
       counter->realease();
