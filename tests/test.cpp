@@ -20,7 +20,7 @@ TEST(Example, EmptyTest) {
   //val1.val=20;
   //SharedPtr<Values> sp5(&val1);
   //std::cout<< sp5->val<<std::endl;
-  std::cout<<*sp1<<" "<<*sp2<<" "<<*sp3<<" "<<*spoz<<std::endl;
+  //std::cout<<*sp1<<" "<<*sp2<<" "<<*sp3<<" "<<*spoz<<std::endl;
   //std::cout<<sp1.get()<<" "<<sp2.get()<<" "<<sp3.get()<<" "<<spoz.get()<<std::endl;
   //std::cout<<(sp)<<" "<<(sp1)<<std::endl;
   //sp1.reset();
