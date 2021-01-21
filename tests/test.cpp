@@ -9,8 +9,8 @@ TEST(Example, EmptyTest) {
     int val;
   };
   SharedPtr<int> sp;
-  /*std::cout<<(sp)<< " " <<sp.use_count() <<std::endl;
-  int val = 5;
+  std::cout<<(sp)<< " " <<sp.use_count() <<std::endl;
+  /*int val = 5;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
   SharedPtr<int> sp3(sp2);
