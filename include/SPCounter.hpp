@@ -19,7 +19,7 @@ class SPCounter {
   void add() noexcept { ++count; }
   void release() noexcept {
     if (!--count) {
-      ptr = nullptr;
+      delete ptr;
       delete this;
     }
   }
