@@ -25,7 +25,9 @@ class SharedPtr {
     if(std::is_move_constructible<T>::value){
       ptr = r.ptr;
       counter = r.counter;
-      counter->add();
+      if(counter) {
+        counter->add();
+      }
     } else {
       throw std::runtime_error("Not constructible type!");
     }
@@ -45,10 +47,14 @@ class SharedPtr {
   }
   auto operator=(const SharedPtr& r) -> SharedPtr& {
     if(std::is_move_constructible<T>::value && &r !=this) {
-      counter->realease();
+      if(counter) {
+        counter->realease();
+      }
       ptr = r.ptr;
       counter = r.counter;
-      counter->add();
+      if(counter) {
+        counter->add();
+      }
     } else if(&r == this) {
       std::cout << "Object equal to this\n";
     } else {
@@ -58,10 +64,14 @@ class SharedPtr {
   }
   auto operator=(SharedPtr&& r) -> SharedPtr& {
     if(std::is_move_assignable<T>::value && &r !=this) {
-      counter->release();
-      ptr = r.ptr;
+      if(counter) {
+        counter->realease();
+      }
+        ptr = r.ptr;
       counter = r.counter;
-      counter->add();
+      if(counter) {
+        counter->add();
+      }
     } else if(&r == this) {
       std::cout << "Object equal to this\n";
     } else {
@@ -78,26 +88,35 @@ class SharedPtr {
   auto get() -> T* { return ptr; }
   void reset() {
     if (counter->use_count() == 1) {
-      counter->release();
+      if(counter) {
+        counter->release();
+      }
     } else {
-      counter->unadd();
+      if(counter) {
+        counter->unadd();
+      }
     }
     ptr = nullptr;
-    counter = new SPCounter<T>();
+    counter = nullptr;
   }
   void reset(T* r) {
     if (counter->use_count() == 1) {
-      //delete ptr;
-      counter->release();
+      if(counter) {
+          counter->release();
+      }
     } else {
-      counter->unadd();
+      if(counter) {
+        counter->unadd();
+      }
     }
     ptr = r;
     if(ptr == nullptr) {
-      counter = new SPCounter<T>();
+      counter = nullptr;
     } else {
-      counter->add();
-      counter->add(1);
+      if(counter) {
+        counter->add();
+        counter->add(1);
+      }
     }
 
   }
@@ -107,7 +126,7 @@ class SharedPtr {
   }
   // возвращает количество объектов SharedPtr, которые ссылаются на тот же управляемый объект
   size_t use_count() {
-   if(counter!=nullptr){
+   if(counter){
      return counter->use_count();
    }else {
      return 0;
