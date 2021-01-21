@@ -16,10 +16,10 @@ TEST(Example, EmptyTest) {
   SharedPtr<int> sp3(sp2);
   SharedPtr<int> spoz(new int (10));
   std::cout<<sp1.use_count()<<std::endl;
-  Values val1;
-  val1.val=20;
-  SharedPtr<Values> sp5(&val1);
-  /*std::cout<< sp5->val<<std::endl;
+  //Values val1;
+  //val1.val=20;
+  //SharedPtr<Values> sp5(&val1);
+  //std::cout<< sp5->val<<std::endl;
   std::cout<<*sp1<<" "<<*sp2<<" "<<*sp3<<" "<<*spoz<<std::endl;
   std::cout<<sp1.get()<<" "<<sp2.get()<<" "<<sp3.get()<<" "<<spoz.get()<<std::endl;
    std::cout<<(sp)<<" "<<(sp1)<<std::endl;
@@ -28,6 +28,6 @@ TEST(Example, EmptyTest) {
   std::cout<<(sp1)<<" "<<*sp2<<std::endl;
   std::cout<<*sp3<<" "<<*spoz<<std::endl;
   sp3.swap(spoz);
-  std::cout<<*sp3<<" "<<*spoz<<std::endl;*/
+  std::cout<<*sp3<<" "<<*spoz<<std::endl;
   EXPECT_TRUE(true);
 }
