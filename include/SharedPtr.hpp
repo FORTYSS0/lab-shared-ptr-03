@@ -39,7 +39,9 @@ class SharedPtr {
     }
   }
   ~SharedPtr() noexcept {
-    counter->release();
+    if(counter) {
+      counter->release();
+    }
   }
   auto operator=(const SharedPtr& r) -> SharedPtr& {
     if(std::is_move_constructible<T>::value && &r !=this) {
