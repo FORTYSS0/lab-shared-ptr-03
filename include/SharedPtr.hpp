@@ -14,7 +14,7 @@ class SharedPtr {
  public:
   SharedPtr() noexcept {
     ptr =nullptr;
-    counter = nullptr;
+    counter = new SPCounter<T>();
   }
   explicit SharedPtr(T* r) {
     std::unique_ptr<T> p(r);
@@ -38,7 +38,7 @@ class SharedPtr {
       throw std::runtime_error("Not assignable type!");
     }
   }
-  ~SharedPtr() { counter->release(); }
+  ~SharedPtr() noexcept { counter->release(); }
   auto operator=(const SharedPtr& r) -> SharedPtr& {
     if(std::is_move_constructible<T>::value && &r !=this) {
       counter->realease();
@@ -79,7 +79,7 @@ class SharedPtr {
       counter->unadd();
     }
     ptr = nullptr;
-    counter = nullptr;
+    counter = new SPCounter<T>();
   }
   void reset(T* r) {
     if (counter->use_count() == 1) {
@@ -90,7 +90,7 @@ class SharedPtr {
     }
     ptr = r;
     if(ptr == nullptr) {
-      counter = nullptr;
+      counter = new SPCounter<T>();
     } else {
       counter->add();
       counter->add(1);

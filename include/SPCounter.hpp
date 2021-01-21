@@ -8,7 +8,14 @@
 template<typename T>
 class SPCounter {
  public:
-  SPCounter(T* p) noexcept : count(1), ptr(p) {}
+  SPCounter() noexcept{
+    count = 0;
+    ptr = nullptr;
+  }
+  SPCounter(T* p) noexcept{
+    count = 1;
+    ptr = p;
+  }
   void add() noexcept { ++count; }
   void release() noexcept {
     if (!--count) {
