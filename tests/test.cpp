@@ -23,8 +23,8 @@ TEST(Example, EmptyTest) {
   std::cout<<*sp1<<" "<<*sp2<<" "<<*sp3<<" "<<*spoz<<std::endl;
   std::cout<<sp1.get()<<" "<<sp2.get()<<" "<<sp3.get()<<" "<<spoz.get()<<std::endl;
   std::cout<<(sp)<<" "<<(sp1)<<std::endl;
-  sp1.reset();
-  sp2.reset(&val2);
+  //sp1.reset();
+  //sp2.reset(&val2);
   std::cout<<(sp1)<<" "<<*sp2<<std::endl;
   std::cout<<*sp3<<" "<<*spoz<<std::endl;
   sp3.swap(spoz);
