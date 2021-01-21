@@ -14,7 +14,7 @@ class SharedPtr {
  public:
   SharedPtr() noexcept {
     ptr =nullptr;
-    counter = new SPCounter<T>();
+    counter = new SPCounter<T>(ptr);
   }
   explicit SharedPtr(T* r) {
     std::unique_ptr<T> p(r);
