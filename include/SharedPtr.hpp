@@ -106,6 +106,9 @@ class SharedPtr {
         counter->unadd();
       }
     }*/
+    if(counter) {
+      counter->unadd
+    }
     ptr = r;
     if(ptr == nullptr) {
       counter = nullptr;
