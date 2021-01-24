@@ -64,3 +64,14 @@ TEST(Test, Zvezda) {
   std::string stroka = "5 5 5 30";
   EXPECT_EQ(str.str(), stroka);
 }
+TEST(Test, Get) {
+  int val = 5, val2 = 30;
+  SharedPtr<int> sp1 (&val);
+  SharedPtr<int> sp2(sp1);
+  SharedPtr<int> sp3(sp2);
+  SharedPtr<int> spoz(&val2);
+  std::stringstream str, str2;
+  str<<sp1.get()<<" "<<sp2.get()<<" "<<sp3.get()<<" "<<spoz.get();
+  str2<<sp1<<" "<<sp2<<" "<<sp3<<" "<<spoz;
+  EXPECT_EQ(str.str(), str2.str());
+}
