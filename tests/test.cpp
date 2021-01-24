@@ -57,7 +57,7 @@ TEST(Test, Reset) {
   sp1.reset();
   sp2.reset(&val2);
   std::stringstream str;
-  str<<(sp1)<<" "<<(sp2);
+  str<<(sp1)<<" "<<*sp2;
   std::string stroka = "0 30";
   EXPECT_EQ(str.str(), stroka);
 }
