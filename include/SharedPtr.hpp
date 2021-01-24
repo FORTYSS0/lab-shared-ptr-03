@@ -99,26 +99,24 @@ class SharedPtr {
     counter = nullptr;
   }
   void reset(T* r) {
-    /*if(counter) {
+    if(counter) {
       if (counter->use_count() == 1) {
         counter->release();
       } else {
         counter->unadd();
-      }
-    }*/
-    if(counter) {
-      if(counter->use_count()!=1) {
-        counter->unadd;
       }
     }
     ptr = r;
     if(ptr == nullptr) {
       counter = nullptr;
     } else {
-      if(counter) {
+      if(countr) {
         counter->add();
+      } else {
+        std::unique_ptr<T> p(r);
+        counter = new SPCounter<T>(p.get());
       }
-    }
+          }
 
   }
   void swap(SharedPtr& r) {
