@@ -86,3 +86,16 @@ TEST(Test, Reset) {
   std::string stroka = "0 30";
   EXPECT_EQ(str.str(), stroka);
 }
+TEST(Test, Swap) {
+  int val = 5, val2 = 30;
+  SharedPtr<int> sp1 (&val);
+  SharedPtr<int> sp2(sp1);
+  SharedPtr<int> sp3(sp2);
+  SharedPtr<int> spoz(&val2);
+  std::stringstream str;
+  str<<*sp3<<" "<<*spoz;
+  sp3.swap(spoz);
+  str<<" "<<*sp3<<" "<<*spoz;
+  std::string stroka = "5 30 30 5";
+  EXPECT_EQ(str.str(), stroka);
+}
