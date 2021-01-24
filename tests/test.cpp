@@ -71,7 +71,7 @@ TEST(Test, Get) {
   SharedPtr<int> sp3(sp2);
   SharedPtr<int> spoz(&val2);
   std::stringstream str, str2;
-  str<<sp1.get()<<" "<<sp2.get()<<" "<<sp3.get()<<" "<<spoz.get();
-  str2<<sp1<<" "<<sp2<<" "<<sp3<<" "<<spoz;
-  EXPECT_EQ(str.str(), str2.str());
+  str<<*sp1.get()<<" "<<*sp2.get()<<" "<<*sp3.get()<<" "<<*spoz.get();
+  std::string stroka = "5 5 5 30";
+  EXPECT_EQ(str.str(), stroka);
 }
