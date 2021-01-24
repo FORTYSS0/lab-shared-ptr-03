@@ -7,6 +7,7 @@
 #include <memory>
 #include <utility>
 #include <atomic>
+#include <fstream>
 #include "SPCounter.hpp"
 
 template <typename T>
