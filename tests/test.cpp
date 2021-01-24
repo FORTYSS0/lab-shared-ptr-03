@@ -52,13 +52,13 @@ TEST(Test, Get) {
 TEST(Test, Reset) {
   int val = 5;
   SharedPtr<int> sp1 (&val);
-  SharedPtr<int> sp2(sp1);
+  //SharedPtr<int> sp2(sp1);
   //SharedPtr<int> sp3(sp2);
   sp1.reset();
   //sp2.reset(&val2);
   std::stringstream str;
-  str<<(sp1)<<" "<<*sp2;
-  std::string stroka = "0 5";
+  str<<(sp1);
+  std::string stroka = "0";
   EXPECT_EQ(str.str(), stroka);
 }
 TEST(Test, Swap) {
