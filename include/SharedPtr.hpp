@@ -110,7 +110,7 @@ class SharedPtr {
     if(ptr == nullptr) {
       counter = nullptr;
     } else {
-      if(countr) {
+      if(counter) {
         counter->add();
       } else {
         std::unique_ptr<T> p(r);
