@@ -50,7 +50,7 @@ TEST(Test, Get) {
   EXPECT_EQ(str.str(), stroka);
 }
 TEST(Test, Reset) {
-  int val = 5, val2 = 30;
+  int val = 5;
   SharedPtr<int> sp1 (&val);
   SharedPtr<int> sp2(sp1);
   //SharedPtr<int> sp3(sp2);
