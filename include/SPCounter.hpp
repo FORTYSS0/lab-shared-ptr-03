@@ -20,7 +20,13 @@ class SPCounter {
     }
   }
   auto use_count() const noexcept -> size_t { return count.load(); }
-  void unadd(){count--;}
+  void unadd(){
+    if(--count){
+      --count;
+    } else {
+      release();
+    }
+  }
   void add(size_t c){
     count = c;
   }
