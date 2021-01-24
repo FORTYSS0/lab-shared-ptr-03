@@ -89,7 +89,7 @@ class SharedPtr {
   auto get() -> T* { return ptr; }
   void reset() {
     if(counter) {
-      if (counter->use_count() < 2) {
+      if (counter->use_count() == 1) {
         counter->release();
       } else {
           counter->unadd();
@@ -100,7 +100,7 @@ class SharedPtr {
   }
   void reset(T* r) {
     if(counter) {
-      if (counter->use_count() < 2) {
+      if (counter->use_count() == 1) {
         counter->release();
       } else {
         counter->unadd();

@@ -55,7 +55,7 @@ TEST(Test, Reset) {
   SharedPtr<int> sp2(sp1);
   //SharedPtr<int> sp3(sp2);
   sp1.reset();
-  sp2.reset(&val2);
+  //sp2.reset(&val2);
   std::stringstream str;
   str<<(sp1)<<" "<<*sp2;
   std::string stroka = "0 30";
